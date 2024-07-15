@@ -17,9 +17,11 @@ MainWindow::MainWindow(QWidget *parent) :
     obj = new CanvasWidget(this);
     dock->setWidget(obj);
 
-    connect(ui->pushButton, &QPushButton::clicked, obj, &CanvasWidget::setDrawModeRectangle);
-    connect(ui->pushButton_2, &QPushButton::clicked, obj, &CanvasWidget::setDrawModeLine);
-    connect(ui->pushButton_3, &QPushButton::clicked, obj, &CanvasWidget::setDrawModeCircle);
+    setCentralWidget(dock);
+
+    connect(ui->actionRectangle, &QAction::triggered, obj, &CanvasWidget::setDrawModeRectangle);
+    connect(ui->actionLine, &QAction::triggered, obj, &CanvasWidget::setDrawModeLine);
+    connect(ui->actionCircle, &QAction::triggered, obj, &CanvasWidget::setDrawModeCircle);
 }
 
 MainWindow::~MainWindow()
