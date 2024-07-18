@@ -13,7 +13,8 @@ ShapeButton::ShapeButton(const QString &iconPath, ShapeType shapeType, QGraphics
 
 void ShapeButton::mousePressEvent(QMouseEvent *event)
 {
-    if (event->button() == Qt::LeftButton) {
+    if (event->button() == Qt::LeftButton)
+    {
         QDrag *drag = new QDrag(this);
         QMimeData *mimeData = new QMimeData;
         mimeData->setText(QString::number(m_shapeType));

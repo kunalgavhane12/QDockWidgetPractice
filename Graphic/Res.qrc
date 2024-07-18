@@ -18,5 +18,7 @@
         <file>Icon/Undo.png</file>
         <file>Icon/zoom-in.svg</file>
         <file>Icon/zoom-out.svg</file>
+        <file>Icon/edit-button.png</file>
+        <file>Icon/pyramid.svg</file>
     </qresource>
 </RCC>

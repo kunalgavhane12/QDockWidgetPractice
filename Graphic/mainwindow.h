@@ -23,10 +23,13 @@ public:
     ~MainWindow();
 
 private slots:
+    void newFile();
+    void openFile();
+    void saveFile();
+    void saveAsFile();
     void zoomIn();
     void zoomOut();
-    void undo();
-    void redo();
+
 
 private:
     Ui::MainWindow *ui;
@@ -38,10 +41,9 @@ private:
     ShapeButton *lineButton;
     ShapeButton *roundedRectangle;
     ShapeButton *squareDashed;
-    ShapeButton *undoButton;
-    ShapeButton *redoButton;
+    ShapeButton *triangleButton;
+    ShapeButton *polygonButton;
     qreal zoomFactor;
-    QUndoStack *undoStack;
 
     void createToolbar();
 };

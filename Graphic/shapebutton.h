@@ -10,7 +10,7 @@ class ShapeButton : public QPushButton
     Q_OBJECT
 
 public:
-    enum ShapeType { Rectangle, Ellipse, Line };
+    enum ShapeType { Rectangle, Ellipse, Line, SquareRectangle, RoundedRectangle, TriangleRectangle, Polygon };
 
     ShapeButton(const QString &iconPath, ShapeType shapeType, QGraphicsScene *scene, QWidget *parent = nullptr);
 

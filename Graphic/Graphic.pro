@@ -9,20 +9,20 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    addshape.cpp \
+#    addshape.cpp \
     customscene.cpp \
     customview.cpp \
     main.cpp \
     mainwindow.cpp \
-    moveshape.cpp \
+#    moveshape.cpp \
     shapebutton.cpp
 
 HEADERS += \
-    addshape.h \
+#    addshape.h \
     customscene.h \
     customview.h \
     mainwindow.h \
-    moveshape.h \
+#    moveshape.h \
     shapebutton.h
 
 FORMS += \
