@@ -1,0 +1,22 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Icon/add-document.svg</file>
+        <file>Icon/Copy.png</file>
+        <file>Icon/cut.png</file>
+        <file>Icon/ellipse.png</file>
+        <file>Icon/folder-open.svg</file>
+        <file>Icon/icons8-pen-40.png</file>
+        <file>Icon/line.png</file>
+        <file>Icon/paste.png</file>
+        <file>Icon/polygon.png</file>
+        <file>Icon/rect.png</file>
+        <file>Icon/Redo.png</file>
+        <file>Icon/roundrectangle.png</file>
+        <file>Icon/Save As.png</file>
+        <file>Icon/Save.png</file>
+        <file>Icon/square-dashed.svg</file>
+        <file>Icon/Undo.png</file>
+        <file>Icon/zoom-in.svg</file>
+        <file>Icon/zoom-out.svg</file>
+    </qresource>
+</RCC>
