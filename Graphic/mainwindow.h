@@ -44,8 +44,10 @@ private:
     ShapeButton *triangleButton;
     ShapeButton *polygonButton;
     qreal zoomFactor;
+    QString currentFile;
 
     void createToolbar();
+    void setCurrentFile(const QString &fileName);
 };
 
 #endif // MAINWINDOW_H

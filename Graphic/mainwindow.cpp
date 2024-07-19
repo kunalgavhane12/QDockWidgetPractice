@@ -1,5 +1,10 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QFileDialog>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QMessageBox>
+#include <QTextStream>
 #include <QWheelEvent>
 #include "customview.h"
 
@@ -46,22 +51,88 @@ MainWindow::~MainWindow()
 
 void MainWindow::newFile()
 {
-
+    scene->clear();
+    setCurrentFile(QString());
 }
 
 void MainWindow::openFile()
 {
+    QString fileName = QFileDialog::getOpenFileName(this, tr("Open File"), "", tr("JSON Files (*.json);;XML Files (*.xml)"));
+    if (fileName.isEmpty())
+        return;
 
+    QFile file(fileName);
+    if (!file.open(QIODevice::ReadOnly))
+    {
+        QMessageBox::warning(this, tr("Open File"), tr("Cannot open file %1:\n%2.").arg(fileName).arg(file.errorString()));
+        return;
+    }
+
+    if (fileName.endsWith(".json"))
+    {
+        QByteArray data = file.readAll();
+        QJsonDocument doc(QJsonDocument::fromJson(data));
+        scene->loadFromJson(doc.object());
+    }
+    else if (fileName.endsWith(".xml"))
+    {
+        QDomDocument doc;
+        if (!doc.setContent(&file))
+        {
+            QMessageBox::warning(this, tr("Open File"), tr("Cannot parse file %1:\n%2.").arg(fileName).arg(file.errorString()));
+            return;
+        }
+        QDomElement root = doc.documentElement();
+        scene->loadFromXml(root);
+    }
+
+    setCurrentFile(fileName);
 }
 
 void MainWindow::saveFile()
 {
+    if (currentFile.isEmpty())
+    {
+        saveAsFile();
+    }
+    else
+    {
+        QFile file(currentFile);
+        if (!file.open(QIODevice::WriteOnly))
+        {
+            QMessageBox::warning(this, tr("Save File"), tr("Cannot save file %1:\n%2.").arg(currentFile).arg(file.errorString()));
+            return;
+        }
 
+        if (currentFile.endsWith(".json"))
+        {
+            QJsonObject sceneObject;
+            scene->saveToJson(sceneObject);
+            QJsonDocument doc(sceneObject);
+            file.write(doc.toJson());
+        }
+        else if (currentFile.endsWith(".xml"))
+        {
+            QDomDocument doc;
+            QDomElement root = doc.createElement("scene");
+            doc.appendChild(root);
+            scene->saveToXml(doc, root);
+            QTextStream stream(&file);
+            stream << doc.toString();
+        }
+
+        setCurrentFile(currentFile);
+    }
 }
 
 void MainWindow::saveAsFile()
 {
+    QString fileName = QFileDialog::getSaveFileName(this, tr("Save File"), "", tr("JSON Files (*.json);;XML Files (*.xml)"));
+    if (fileName.isEmpty())
+        return;
 
+    setCurrentFile(fileName);
+    saveFile();
 }
 
 void MainWindow::zoomIn()
@@ -97,4 +168,11 @@ void MainWindow::createToolbar()
     toolBar->addWidget(polygonButton);
 
     addToolBar(toolBar);
+}
+
+void MainWindow::setCurrentFile(const QString &fileName)
+{
+    currentFile = fileName;
+    setWindowModified(false);
+    setWindowFilePath(currentFile.isEmpty() ? tr("untitled.json") : currentFile);
 }
