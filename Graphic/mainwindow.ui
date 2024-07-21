@@ -102,16 +102,15 @@
     <string>toolBar</string>
    </property>
    <property name="allowedAreas">
-    <set>Qt::LeftToolBarArea</set>
+    <set>Qt::TopToolBarArea</set>
    </property>
    <attribute name="toolBarArea">
-    <enum>LeftToolBarArea</enum>
+    <enum>TopToolBarArea</enum>
    </attribute>
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
    <addaction name="actionSave"/>
-   <addaction name="actionEdit"/>
    <addaction name="separator"/>
    <addaction name="actionUndo"/>
    <addaction name="actionRedo"/>
@@ -123,6 +122,18 @@
    <addaction name="actionZoom_Out"/>
    <addaction name="separator"/>
    <addaction name="actionSelection"/>
+  </widget>
+  <widget class="QToolBar" name="toolBar_2">
+   <property name="windowTitle">
+    <string>toolBar_2</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>LeftToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionEdit"/>
   </widget>
   <action name="actionNew">
    <property name="icon">

@@ -19,7 +19,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = nullptr);
+     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
 private slots:
@@ -29,6 +29,8 @@ private slots:
     void saveAsFile();
     void zoomIn();
     void zoomOut();
+    void penColor();
+    void penWidth();
 
 
 private:

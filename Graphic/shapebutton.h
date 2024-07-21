@@ -15,7 +15,7 @@ public:
                      Line,
                      RoundedRectangle,
                      TriangleRectangle,
-                     Polygon };
+                     Polygon, Select };
 
     ShapeButton(const QString &iconPath, ShapeType shapeType, QGraphicsScene *scene, QWidget *parent = nullptr);
 

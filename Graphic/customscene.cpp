@@ -252,20 +252,6 @@ void CustomScene::paintEvent(QPaintEvent *event)
     painter.drawRect(QRect(50, 70, 80, 40));
 }
 
-void CustomScene::cut()
-{
-
-}
-
-void CustomScene::copy()
-{
-
-}
-
-void CustomScene::paste()
-{
-
-}
 
 void CustomScene::undo()
 {

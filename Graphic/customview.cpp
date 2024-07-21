@@ -3,7 +3,7 @@
 CustomView::CustomView(QWidget *parent) : QGraphicsView(parent)
 {
     setTransformationAnchor(QGraphicsView::AnchorUnderMouse);
-    setDragMode(ScrollHandDrag);
+//    setDragMode(ScrollHandDrag);
 }
 
 void CustomView::wheelEvent(QWheelEvent *event)

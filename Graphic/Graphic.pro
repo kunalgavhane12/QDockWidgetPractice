@@ -11,6 +11,7 @@ CONFIG += c++11
 SOURCES += \
 #    addshape.cpp \
     customscene.cpp \
+    customshapeitem.cpp \
     customview.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -20,6 +21,7 @@ SOURCES += \
 HEADERS += \
 #    addshape.h \
     customscene.h \
+    customshapeitem.h \
     customview.h \
     mainwindow.h \
 #    moveshape.h \

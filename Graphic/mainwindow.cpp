@@ -6,6 +6,8 @@
 #include <QMessageBox>
 #include <QTextStream>
 #include <QWheelEvent>
+#include <QColorDialog>
+#include <QInputDialog>
 #include "customview.h"
 
 MainWindow::MainWindow(QWidget *parent)
@@ -33,11 +35,12 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->actionSave_as, &QAction::triggered, this, &MainWindow::saveAsFile);
     connect(ui->actionClose, &QAction::triggered, this, &MainWindow::close);
 
-//    connect(ui->actionCut, &QAction::triggered, scene, &CustomScene::cut);
-//    connect(ui->actionCopy, &QAction::triggered, scene, &CustomScene::copy);
-//    connect(ui->actionPaste, &QAction::triggered, scene, &CustomScene::paste);
     connect(ui->actionUndo, &QAction::triggered, scene, &CustomScene::undo);
     connect(ui->actionRedo, &QAction::triggered, scene, &CustomScene::redo);
+
+    connect(ui->actionPen_Color, &QAction::triggered, this, &MainWindow::penColor);
+    connect(ui->actionPen_Size, &QAction::triggered, this, &MainWindow::penWidth);
+//    connect(ui->actionEdit, &QAction::triggered, scene, &CustomScene::drawShapes);
 
     connect(ui->actionZoom_In, &QAction::triggered, this, &MainWindow::zoomIn);
     connect(ui->actionZoom_Out, &QAction::triggered, this, &MainWindow::zoomOut);
@@ -47,6 +50,28 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::penColor()
+{
+//    QColor newColor = QColorDialog::getColor(scene->penColor());
+//    if(newColor.isValid())
+//    {
+//        scene->setPenColor(newColor);
+//    }
+
+}
+
+void MainWindow::penWidth()
+{
+//    bool ok;
+//    int newWidth = QInputDialog::getInt(this, "View", "Select pen width : ",
+//                                        scene->penWidth(),1,50,1,&ok);
+
+//    if(ok)
+//    {
+//        scene->setPenWidth(newWidth);
+//    }
 }
 
 void MainWindow::newFile()
@@ -149,8 +174,6 @@ void MainWindow::zoomOut()
 
 void MainWindow::createToolbar()
 {
-    QToolBar *toolBar = addToolBar(tr("Shapes"));
-
     rectButton = new ShapeButton(":/Icon/rect.png", ShapeButton::Rectangle, scene);
     ellipseButton = new ShapeButton(":/Icon/ellipse.png", ShapeButton::Ellipse, scene);
     lineButton = new ShapeButton(":/Icon/line.png", ShapeButton::Line, scene);
@@ -158,14 +181,13 @@ void MainWindow::createToolbar()
     triangleButton = new ShapeButton(":/Icon/pyramid.svg", ShapeButton::TriangleRectangle, scene);
     polygonButton = new ShapeButton(":/Icon/polygon.png", ShapeButton::Polygon, scene);
 
-    toolBar->addWidget(rectButton);
-    toolBar->addWidget(ellipseButton);
-    toolBar->addWidget(lineButton);
-    toolBar->addWidget(roundedRectangle);
-    toolBar->addWidget(triangleButton);
-    toolBar->addWidget(polygonButton);
+    ui->toolBar_2->addWidget(rectButton);
+    ui->toolBar_2->addWidget(ellipseButton);
+    ui->toolBar_2->addWidget(lineButton);
+    ui->toolBar_2->addWidget(roundedRectangle);
+    ui->toolBar_2->addWidget(triangleButton);
+    ui->toolBar_2->addWidget(polygonButton);
 
-    addToolBar(toolBar);
 }
 
 void MainWindow::setCurrentFile(const QString &fileName)
